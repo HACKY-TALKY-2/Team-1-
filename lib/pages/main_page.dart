@@ -33,6 +33,8 @@ const tList = [
 ];
 
 class MainPage extends StatelessWidget {
+  final controller = Get.put(StationController());
+
   @override
   Widget build(BuildContext context) {
     const tmpList = tList;

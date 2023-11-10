@@ -5,7 +5,7 @@ import 'package:namu/controllers/station_controller.dart';
 class TreeAppBar extends StatelessWidget {
   TreeAppBar({Key? key}) : super(key: key);
 
-  final controller = Get.put(StationController());
+  final controller = Get.find<StationController>();
 
   @override
   Widget build(BuildContext context) {
@@ -25,12 +25,12 @@ class TreeAppBar extends StatelessWidget {
           child: Stack(
             alignment: Alignment.centerRight,
             children: [
-              Obx(
-                () => LinearProgressIndicator(
+              GetBuilder<StationController>(
+                builder: (_) => LinearProgressIndicator(
                   minHeight: 12,
-                  color: StationController.to.station.value.color,
-                  value: StationController.to.station.value.guage /
-                      StationController.to.station.value.max_guage,
+                  color: controller.station.color,
+                  value:
+                      controller.station.guage / controller.station.max_guage,
                   borderRadius: BorderRadius.circular(6),
                 ),
               ),
@@ -38,17 +38,19 @@ class TreeAppBar extends StatelessWidget {
                 width: 72,
                 height: 48,
                 decoration: BoxDecoration(
-                  color: controller.station.value.color,
+                  color: controller.station.color,
                   borderRadius: BorderRadius.circular(24), // Rounded corners
                 ),
                 alignment: Alignment.center,
-                child: const Text(
-                  "56%",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold),
+                child: GetBuilder<StationController>(
+                  builder: (_) => Text(
+                    "${controller.station.guage / controller.station.max_guage * 100}%",
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold),
+                  ),
                 ),
               ),
             ],
@@ -57,11 +59,9 @@ class TreeAppBar extends StatelessWidget {
         Stack(
           alignment: Alignment.center,
           children: [
-            Obx(
-              () => Container(
-                height: 24,
-                color: controller.station.value.color,
-              ),
+            Container(
+              height: 24,
+              color: controller.station.color,
             ),
             Container(
               width: 300.0, // Set the width
@@ -70,7 +70,7 @@ class TreeAppBar extends StatelessWidget {
                 color: Colors.white, // Background color of the container
                 borderRadius: BorderRadius.circular(36), // Rounded corners
                 border: Border.all(
-                  color: Colors.green, // Color of the border
+                  color: controller.station.color, // Color of the border
                   width: 10, // Thickness of the border
                 ),
               ),

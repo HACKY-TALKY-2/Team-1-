@@ -3,7 +3,9 @@ import 'package:get/get.dart';
 import 'package:namu/controllers/station_controller.dart';
 
 class MainDrawer extends StatelessWidget {
-  final controller = Get.put(StationController());
+  MainDrawer({super.key});
+
+  final controller = Get.find<StationController>();
 
   @override
   Widget build(BuildContext context) {
@@ -11,13 +13,13 @@ class MainDrawer extends StatelessWidget {
         // Add a ListView to the drawer. This ensures the user can scroll
         // through the options in the drawer if there isn't enough vertical
         // space to fit everything.
-        child: Obx(() => ListView(
+        child: ListView(
             // Important: Remove any padding from the ListView.
             padding: EdgeInsets.zero,
             children: <Widget>[
                   DrawerHeader(
                     decoration: BoxDecoration(
-                      color: controller.station.value.color,
+                      color: controller.station.color,
                     ),
                     child: const Text(
                       '지하철 역 선택',
@@ -30,6 +32,6 @@ class MainDrawer extends StatelessWidget {
                           title: Text(e),
                           onTap: () {},
                         ))
-                    .toList())));
+                    .toList()));
   }
 }

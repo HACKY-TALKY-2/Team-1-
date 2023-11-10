@@ -9,8 +9,8 @@ class Station {
   int current_tree_image_type = 0;
   String current_tree_msg = "";
   String current_tree_name = "";
-  int max_guage = 1000;
-  int guage = 123;
+  int max_guage = 1;
+  int guage = 0;
   double lng = 0;
   double lat = 0;
 }
@@ -27,34 +27,31 @@ Color hexToColor(String hexString) {
 }
 
 class StationController extends GetxController {
-  var name = "역삼".obs;
-  var station = Station().obs;
-  var stations = <String>[].obs;
-
-  static StationController get to => Get.find();
+  var name = "역삼";
+  var station = Station();
+  var stations = <String>[];
 
   @override
   void onInit() {
     super.onInit();
 
     db.collection("station").get().then((event) {
-      stations.value = event.docs.map((doc) => doc.id).toList();
+      stations = event.docs.map((doc) => doc.id).toList();
       update();
     });
 
-    db.collection("station").doc(name.value).get().then((event) {
+    db.collection("station").doc(name).get().then((event) {
       if (event.exists) {
-        station.value.color = hexToColor(event.data()!["color"]);
-        station.value.current_tree_image_type =
+        station.color = hexToColor(event.data()!["color"]);
+        station.current_tree_image_type =
             event.data()!["current_tree_image_type"] as int;
-        station.value.current_tree_msg =
-            event.data()!["current_tree_msg"] as String;
-        station.value.current_tree_name =
+        station.current_tree_msg = event.data()!["current_tree_msg"] as String;
+        station.current_tree_name =
             event.data()!["current_tree_name"] as String;
-        station.value.max_guage = event.data()!["max_gauge"] as int;
-        station.value.guage = event.data()!["gauge"] as int;
-        station.value.lng = event.data()!["lng"] as double;
-        station.value.lat = event.data()!["lat"] as double;
+        station.max_guage = event.data()!["max_gauge"] as int;
+        station.guage = event.data()!["gauge"] as int;
+        station.lng = event.data()!["lng"] as double;
+        station.lat = event.data()!["lat"] as double;
         update();
       }
     });
