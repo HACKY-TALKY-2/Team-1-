@@ -1,5 +1,11 @@
+import 'dart:js_util';
+
 import 'package:flutter/material.dart';
 import 'package:namu/pages/main_page.dart';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
+
+final db = FirebaseFirestore.instance;
 
 class FloatingButton extends StatelessWidget {
   const FloatingButton({super.key});
@@ -30,6 +36,12 @@ class FloatingButton extends StatelessWidget {
                   TextButton(
                     child: const Text('OK'),
                     onPressed: () {
+                      db.collection('station').doc("역삼").collection('board')
+                      .add({
+                        'emoji': "😀",
+                        'like_num': 30,
+                        'message': textContent,
+                      });
                       Navigator.of(context).pop();
                     },
                   ),
