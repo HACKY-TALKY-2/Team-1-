@@ -70,7 +70,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '581726238939',
     projectId: 'seoul-tree-corp',
     storageBucket: 'seoul-tree-corp.appspot.com',
-    androidClientId: '581726238939-ak3m565s81hv4g8546agdrs81bpkdpb3.apps.googleusercontent.com',
+    androidClientId: '581726238939-2vvn1ku9cqgb6p0e7pnv2if2lfd07oeg.apps.googleusercontent.com',
     iosClientId: '581726238939-4qbu46ohni4o7454qqsqbmced0i7vo5f.apps.googleusercontent.com',
     iosBundleId: 'dev.sboh.namu',
   );

@@ -6,7 +6,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:get/route_manager.dart';
 import 'package:namu/firebase_options.dart';
 import 'package:namu/pages/login_page.dart';
-import 'package:namu/pages/main_page.dart';
+import 'package:namu/widgets/tree_app_bar.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

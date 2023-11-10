@@ -14,11 +14,11 @@
       },
       "oauth_client": [
         {
-          "client_id": "581726238939-ak3m565s81hv4g8546agdrs81bpkdpb3.apps.googleusercontent.com",
+          "client_id": "581726238939-2vvn1ku9cqgb6p0e7pnv2if2lfd07oeg.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "dev.sboh.namu",
-            "certificate_hash": "7a395b72e3fe4273e020629c085ac6095f88e273"
+            "certificate_hash": "c52e2445f88e45d3eb54909e9cfb6430d149714d"
           }
         },
         {

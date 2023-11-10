@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:namu/controllers/auth_controller.dart';
-import 'package:namu/fragment/board_list.dart';
+import 'package:namu/widgets/tree_app_bar.dart';
 import 'package:namu/pages/main_page.dart';
 
 class LoginPage extends StatelessWidget {
@@ -12,24 +12,31 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: BoardList()
-
-      // Center(
-      //   child: Row(
-      //     children: [
-      //       const BoardList(),
-      //       ElevatedButton(
-      //         child: Text('Sign in with Google'),
-      //         onPressed: () async {
-      //           bool success = await controller.signInWithGoogle();
-      //           if (success) {
-      //             Get.to(const MainPage(title: "서울나무공사"));
-      //           }
-      //         },
-      //       ),
-      //     ],
-      //   ),
-      // )
+      body: Column(
+        children: [
+          const Expanded(
+            child: Center(
+              child: Text(
+                '🥳 환영합니다!',
+                style: TextStyle(fontSize: 32),
+              ),
+            ),
+          ),
+          Expanded(
+            child: Center(
+              child: ElevatedButton(
+                child: const Text('Google로 로그인'),
+                onPressed: () async {
+                  bool success = await controller.signInWithGoogle();
+                  if (success) {
+                    Get.off(MainPage());
+                  }
+                },
+              ),
+            ),
+          )
+        ],
+      ),
     );
   }
 }

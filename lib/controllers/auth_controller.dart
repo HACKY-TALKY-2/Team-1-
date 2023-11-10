@@ -6,7 +6,7 @@ class AuthController extends GetxController {
   final _auth = FirebaseAuth.instance;
   final _googleSignIn = GoogleSignIn(
       clientId:
-          "com.googleusercontent.apps.581726238939-nrlam6kiilc0ba3hdtnprnpffpvgbmff");
+          "581726238939-4qbu46ohni4o7454qqsqbmced0i7vo5f.apps.googleusercontent.com");
 
   User? user;
 
