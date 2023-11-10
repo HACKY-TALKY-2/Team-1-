@@ -7,8 +7,6 @@ class TreeAppBar extends StatelessWidget {
 
   final controller = Get.put(StationController());
 
-  RxDouble _percent = 0.56.obs;
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -31,7 +29,7 @@ class TreeAppBar extends StatelessWidget {
                 () => LinearProgressIndicator(
                   minHeight: 12,
                   color: controller.station.value.color,
-                  value: _percent.value,
+                  value: 123 / 1000,
                   borderRadius: BorderRadius.circular(6),
                 ),
               ),
@@ -39,7 +37,7 @@ class TreeAppBar extends StatelessWidget {
                 width: 72,
                 height: 48,
                 decoration: BoxDecoration(
-                  color: Colors.green,
+                  color: controller.station.value.color,
                   borderRadius: BorderRadius.circular(24), // Rounded corners
                 ),
                 alignment: Alignment.center,
@@ -58,9 +56,11 @@ class TreeAppBar extends StatelessWidget {
         Stack(
           alignment: Alignment.center,
           children: [
-            Container(
-              height: 24,
-              color: Colors.green,
+            Obx(
+              () => Container(
+                height: 24,
+                color: controller.station.value.color,
+              ),
             ),
             Container(
               width: 300.0, // Set the width
