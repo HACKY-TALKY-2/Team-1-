@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:namu/controllers/station_controller.dart';
 
 class TreeAppBar extends StatelessWidget {
   TreeAppBar({Key? key}) : super(key: key);
+
+  final controller = Get.put(StationController());
 
   RxDouble _percent = 0.56.obs;
 
@@ -12,7 +15,7 @@ class TreeAppBar extends StatelessWidget {
         child: Column(
       children: [
         Container(
-          height: 36,
+          height: 48,
         ),
         const Image(
           image: AssetImage('assets/sprout.png'),
@@ -27,7 +30,7 @@ class TreeAppBar extends StatelessWidget {
               Obx(
                 () => LinearProgressIndicator(
                   minHeight: 12,
-                  color: Colors.green,
+                  color: controller.color.value,
                   value: _percent.value,
                   borderRadius: BorderRadius.circular(6),
                 ),

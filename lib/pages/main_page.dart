@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:namu/controllers/station_controller.dart';
+import 'package:namu/widgets/main_drawer.dart';
 import 'package:namu/widgets/tree_app_bar.dart';
 
 const tList = [
@@ -29,20 +32,14 @@ const tList = [
   }
 ];
 
-class MainPage extends StatefulWidget {
-  const MainPage({super.key});
-
-  @override
-  State<MainPage> createState() => _MainPageState();
-}
-
-class _MainPageState extends State<MainPage> {
+class MainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     const tmpList = tList;
     final Size size = MediaQuery.of(context).size;
 
     return Scaffold(
+      drawer: MainDrawer(),
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
