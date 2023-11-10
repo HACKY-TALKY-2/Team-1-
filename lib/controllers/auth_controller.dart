@@ -5,8 +5,9 @@ import 'package:google_sign_in/google_sign_in.dart';
 class AuthController extends GetxController {
   final _auth = FirebaseAuth.instance;
   final _googleSignIn = GoogleSignIn(
-      clientId:
-          "581726238939-4qbu46ohni4o7454qqsqbmced0i7vo5f.apps.googleusercontent.com");
+      clientId: GetPlatform.isWeb
+          ? "581726238939-nrlam6kiilc0ba3hdtnprnpffpvgbmff.apps.googleusercontent.com"
+          : "581726238939-4qbu46ohni4o7454qqsqbmced0i7vo5f.apps.googleusercontent.com");
 
   User? user;
 
