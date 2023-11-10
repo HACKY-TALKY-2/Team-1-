@@ -18,13 +18,24 @@ class TreeAppBar extends StatelessWidget {
         ),
         Stack(
           children: [
-            const Image(
+
+            Row(
+              
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+              const SizedBox(width: 50),  
+                    const Image(
               image: AssetImage('assets/sprout.png'),
               height: 180,
             ),
-            ElevatedButton(
-              child: Text("기록"),
-              onPressed: () => {Get.to(HistoryPage())},
+                Padding(
+                  padding: const EdgeInsets.all(12.0),
+                  child: ElevatedButton(
+                    child: Text("히스토리"),
+                    onPressed: () => {Get.to(HistoryPage())},
+                  ),
+                ),
+              ],
             )
           ],
         ),
