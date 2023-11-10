@@ -1,9 +1,13 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:namu/controllers/station_controller.dart';
 import 'package:namu/widgets/main_drawer.dart';
 import 'package:namu/widgets/tree_app_bar.dart';
 
+import '../widgets/floating_button.dart';
+
+final db = FirebaseFirestore.instance;
 const tList = [
   {
     "text": "열어분,, 오늘 정말 추우니까 따듯하게 입고 dddddddddddddddd나오세요. 🥶🥶",
@@ -39,7 +43,46 @@ class MainPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
 
-    return Scaffold(
+    return Scaffold(floatingActionButton: FloatingActionButton(
+      onPressed: () {
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            String textContent = '';
+            return AlertDialog(
+              title: const Text('나무에 남길 텍스트를 입력해주세요'),
+              content: TextField(
+                onChanged: (text) {
+                  textContent = text;
+                },
+              ),
+              actions: [
+                TextButton(
+                  child: const Text('Cancel'),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                ),
+                TextButton(
+                  child: const Text('OK'),
+                  onPressed: () {
+                    db.collection('station').doc("역삼").collection('board')
+                        .add({
+                      'emoji': "😀",
+                      'like_num': 30,
+                      'message': textContent,
+                    });
+                    Navigator.of(context).pop();
+                  },
+                ),
+              ],
+            );
+          },
+        );
+      },
+      child: Icon(Icons.add),
+    ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       drawer: MainDrawer(),
       body: CustomScrollView(
         slivers: [
