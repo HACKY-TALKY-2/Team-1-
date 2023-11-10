@@ -28,8 +28,9 @@ class TreeAppBar extends StatelessWidget {
               Obx(
                 () => LinearProgressIndicator(
                   minHeight: 12,
-                  color: controller.station.value.color,
-                  value: 123 / 1000,
+                  color: StationController.to.station.value.color,
+                  value: StationController.to.station.value.guage /
+                      StationController.to.station.value.max_guage,
                   borderRadius: BorderRadius.circular(6),
                 ),
               ),

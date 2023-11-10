@@ -11,6 +11,8 @@ class AuthController extends GetxController {
 
   User? user;
 
+  static AuthController get to => Get.find();
+
   Future<bool> signInWithGoogle() async {
     final GoogleSignInAccount? googleSignInAccount =
         await _googleSignIn.signIn();
