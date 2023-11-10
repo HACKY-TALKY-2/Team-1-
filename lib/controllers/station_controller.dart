@@ -29,6 +29,7 @@ Color hexToColor(String hexString) {
 class StationController extends GetxController {
   var name = "역삼";
   var station = Station();
+  var board = <Map<String, dynamic>>[];
   var stations = <String>[];
 
   @override
@@ -54,6 +55,13 @@ class StationController extends GetxController {
         station.lat = event.data()!["lat"] as double;
         update();
       }
+    });
+
+    db.collection("station").doc(name).collection("board").get().then((event) {
+      board = event.docs.map((element) {
+        return element.data();
+      }).toList();
+      update();
     });
   }
 }

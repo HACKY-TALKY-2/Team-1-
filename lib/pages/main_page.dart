@@ -37,7 +37,6 @@ class MainPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const tmpList = tList;
     final Size size = MediaQuery.of(context).size;
 
     return Scaffold(
@@ -51,45 +50,46 @@ class MainPage extends StatelessWidget {
               background: TreeAppBar(),
             ),
           ),
-          SliverList(
-            delegate: SliverChildBuilderDelegate(
-              (BuildContext context, int index) {
-                return Container(
-                    //color: Color(0xffECECEC),
-                    alignment: Alignment.center,
-                    height: 80, //size.height * 0.1,
-                    margin: const EdgeInsets.all(5.0),
-                    padding: const EdgeInsets.all(16.0),
-                    decoration: BoxDecoration(
-                      color: Color(int.parse("0xff${tmpList[index]['color']}")),
-                      borderRadius: BorderRadius.all(Radius.circular(
-                          20.0)), //BorderRadius.vertical(top: Radius.circular(10)),
+          GetBuilder<StationController>(
+              builder: (_) => SliverList(
+                    delegate: SliverChildBuilderDelegate(
+                      (BuildContext context, int index) {
+                        return Container(
+                            //color: Color(0xffECECEC),
+                            alignment: Alignment.center,
+                            height: 80, //size.height * 0.1,
+                            margin: const EdgeInsets.all(5.0),
+                            padding: const EdgeInsets.all(16.0),
+                            decoration: BoxDecoration(
+                              color: controller.station.color,
+                              borderRadius: BorderRadius.all(Radius.circular(
+                                  20.0)), //BorderRadius.vertical(top: Radius.circular(10)),
+                            ),
+                            child: Row(
+                              children: [
+                                Text(
+                                  '${controller.board[index]['emoji']}',
+                                  style: TextStyle(
+                                    fontSize: 26,
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: 20.0,
+                                ),
+                                Flexible(
+                                    child: Text(
+                                  '${controller.board[index]['message']}',
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                )),
+                              ],
+                            ));
+                      },
+                      childCount: controller.board.length,
                     ),
-                    child: Row(
-                      children: [
-                        Text(
-                          '${tmpList[index]['emotion']}',
-                          style: TextStyle(
-                            fontSize: 26,
-                          ),
-                        ),
-                        SizedBox(
-                          width: 20.0,
-                        ),
-                        Flexible(
-                            child: Text(
-                          '${tmpList[index]['text']}',
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        )),
-                      ],
-                    ));
-              },
-              childCount: tmpList.length,
-            ),
-          ),
+                  ))
         ],
       ),
     );
