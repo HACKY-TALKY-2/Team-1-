@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 
 const hList = [
   {
+    "assets": "assets/Tree_img_1.png",
     "tree": "벚꽃나무",
     "te": "사단법인 생명의 숲\n나무 100그루 기부 성공!\n",
     "date": "2023.03. - 2023.04 (100000L)",
   },
   {
+    "assets": "assets/Tree_img_1.png",
     "tree": "떡갈나무",
     "te": "unicef\n지구를 위해 100만원 기부\n",
     "date": "2022.08. - 2023.3 (2600L)",
