@@ -24,14 +24,27 @@ class LoginPage extends StatelessWidget {
           ),
           Expanded(
             child: Center(
-              child: ElevatedButton(
-                child: const Text('Google로 로그인'),
-                onPressed: () async {
-                  bool success = await controller.signInWithGoogle();
-                  if (success) {
-                    Get.off(MainPage());
-                  }
-                },
+              child: Column(
+                children: [
+                  ElevatedButton(
+                    child: const Text('Google로 로그인'),
+                    onPressed: () async {
+                      bool success = await controller.signInWithGoogle();
+                      if (success) {
+                        Get.off(MainPage());
+                      }
+                    },
+                  ),
+                  ElevatedButton(
+                    child: const Text('익명으로 로그인'),
+                    onPressed: () async {
+                      bool success = await controller.signInAnonymously();
+                      if (success) {
+                        Get.off(MainPage());
+                      }
+                    },
+                  ),
+                ],
               ),
             ),
           )

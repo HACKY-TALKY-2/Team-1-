@@ -31,4 +31,11 @@ class AuthController extends GetxController {
     }
     return false;
   }
+
+  Future<bool> signInAnonymously() async {
+    final userCredential = await FirebaseAuth.instance.signInAnonymously();
+    user = userCredential.user;
+    update();
+    return true;
+  }
 }
