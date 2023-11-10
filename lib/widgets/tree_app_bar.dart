@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:namu/controllers/station_controller.dart';
+import 'package:namu/pages/history_page.dart';
 
 class TreeAppBar extends StatelessWidget {
   TreeAppBar({Key? key}) : super(key: key);
@@ -15,9 +16,17 @@ class TreeAppBar extends StatelessWidget {
         Container(
           height: 48,
         ),
-        const Image(
-          image: AssetImage('assets/sprout.png'),
-          height: 180,
+        Stack(
+          children: [
+            const Image(
+              image: AssetImage('assets/sprout.png'),
+              height: 180,
+            ),
+            ElevatedButton(
+              child: Text("기록"),
+              onPressed: () => {Get.to(HistoryPage())},
+            )
+          ],
         ),
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 12),
