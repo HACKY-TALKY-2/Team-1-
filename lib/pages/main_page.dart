@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:namu/controllers/station_controller.dart';
+import 'package:namu/widgets/floating_button.dart';
 import 'package:namu/widgets/main_drawer.dart';
 import 'package:namu/widgets/tree_app_bar.dart';
 
